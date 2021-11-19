@@ -1,0 +1,17 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/hailey/dev/gba_test'
+ 
+[ -d build ] || mkdir -p build
+make BUILDDIR=`cd build && pwd` --no-print-directory -C build -f /home/hailey/dev/gba_test/Makefile
+ 
+echo main.c
+arm-none-eabi-gcc -MMD -MP -MF /home/hailey/dev/gba_test/build/main.d -gdwarf-2 -Wall -mcpu=arm7tdmi -mtune=arm7tdmi -mthumb -mthumb-interwork -iquote /home/hailey/dev/gba_test/include -iquote /home/hailey/dev/gba_test/resources -I/opt/devkitpro/libgba/include -I/home/hailey/dev/gba_test/build -c /home/hailey/dev/gba_test/source/main.c -o main.o 
+echo linking cartridge
+ 
+arm-none-eabi-gcc  -g -mthumb -mthumb-interwork -Wl,-Map,gba_test.map -specs=gba.specs   main.o  -L/opt/devkitpro/libgba/lib -lmm -lgba -o /home/hailey/dev/gba_test/gba_test.elf
+arm-none-eabi-objcopy -O binary /home/hailey/dev/gba_test/gba_test.elf /home/hailey/dev/gba_test/gba_test.gba
+echo built ... gba_test.gba
+gbafix /home/hailey/dev/gba_test/gba_test.gba
+ 
+make: Leaving directory '/home/hailey/dev/gba_test'
+ 

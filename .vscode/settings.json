@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "gba.h": "c",
+        "gba_console.h": "c",
+        "gba_base.h": "c",
+        "gba_interrupt.h": "c",
+        "gba_systemcalls.h": "c",
+        "stdarg.h": "c",
+        "gba_affine.h": "c",
+        "gba_types.h": "c",
+        "gba_sio.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
